@@ -6,21 +6,22 @@ const db = require("./connection");
    title varchar(128) NOT NULL,   \
    descripcion varchar(512));');*/
 
-
 async function get_all_pubs(table_name){
-	await db.any("SELECT * FROM adopt_pubs")
-    .then(function (data) {
-        console.log(data);
-        return data;
+    let data_f = {};
+    await db.any("SELECT * FROM adopt_pubs")
+    .then((data) => {
+        data_f = data;
     })
     .catch(function (error) {
         console.log("ERROR:", error);
     });
+
+    return data_f;
 }
 
 
-function add_adopt_pub(title, description){
-	db.none('INSERT INTO adopt_pubs(title, descripcion) VALUES($1, $2)', [title, description])
+async function add_adopt_pub(title, description){
+	await db.none('INSERT INTO adopt_pubs(title, descripcion) VALUES($1, $2)', [title, description])
 	.then(function (data) {
         console.log(`Se agrego: ${title}`);
     })

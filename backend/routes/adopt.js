@@ -8,17 +8,23 @@ const adopt_db = require("../database/publications");
 
 TABLE_NAME = 'adopt_pubs';
 
-router.get('/', function(req, res, next) {
-  return adopt_db.get_all_pubs(TABLE_NAME).then((response) => console.log(response));
+router.get('/', async function(req, res, next) {
+  const response = await adopt_db.get_all_pubs(TABLE_NAME);
+  res.json(response);
 });
 
 
 //Agregar publicacion.
-router.post('/add', function(req, res, next) {
+router.post('/add', async function(req, res, next) {
   let title = req.body.title;
   let description = req.body.description;
+  
+  console.log(title);
+  console.log(description);
+  
+  await adopt_db.add_adopt_pub(title, description);
 
-  adopt_db.add_adopt_pub(title, description);
+  res.send("Agregado con exito");
 });
 
 
