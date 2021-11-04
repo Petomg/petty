@@ -18,10 +18,7 @@ router.get('/', async function(req, res, next) {
 router.post('/add', async function(req, res, next) {
   let title = req.body.title;
   let description = req.body.description;
-  
-  console.log(title);
-  console.log(description);
-  
+
   await adopt_db.add_adopt_pub(title, description);
 
   res.send("Agregado con exito");

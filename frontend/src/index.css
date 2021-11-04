@@ -14,5 +14,21 @@ code {
 
 .adopt-card{
   margin: auto;
-  margin-bottom: 5em;
+  margin-bottom: 4em;
+}
+
+.navbar-link{
+  text-decoration: none;
+  color: azure;
+  padding: 0.6em;
+  border-radius: 1em;
+}
+
+.navbar-link:hover{
+  box-shadow: 2px 2px 1px rgb(48, 48, 141);
+}
+
+.titulo-seccion{
+  font-family: 'Quicksand', sans-serif;
+  color: #4773C4;
 }
